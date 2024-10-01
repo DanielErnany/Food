@@ -16,6 +16,33 @@ class Recipe {
   });
 
   bool isSweet() {
-    return tipo == "doce";
+    if (tipo == "doce") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  factory Recipe.fromMap(Map<String, dynamic> map) {
+    List<String> ingredients = [];
+
+    if (map['IngredientesBase'] != null && map['IngredientesBase'] is List) {
+      ingredients =
+          List<String>.from(map['IngredientesBase'][0]['nomesIngrediente']);
+    }
+
+    return Recipe(
+      name: map['receita'] ?? '',
+      imagePath: map['link_imagem'] ?? '',
+      tipo: map['tipo'] ?? '',
+      ingredients: ingredients,
+      ingredientsDescription: map['ingredientes'] ?? '',
+      steps: map['modo_preparo'] ?? '',
+    );
+  }
+
+  @override
+  String toString() {
+    return 'Recipe{name: $name, imagePath: $imagePath, tipo: $tipo, ingredients: $ingredients, ingredientsDescription: $ingredientsDescription, steps: $steps}';
   }
 }
