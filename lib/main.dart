@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food/pages/recipe_page.dart';
 import 'package:food/pages/recipes_page.dart';
+import 'package:food/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,14 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Food',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: AppTheme.theme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
         initialRoute: '/',
         routes: {
-          '/': (context) => RecipesPage(),
-          '/recipePage': (context) => RecipePage(),
+          '/': (context) => const RecipesPage(),
+          '/recipePage': (context) => const RecipePage(),
         });
   }
 }

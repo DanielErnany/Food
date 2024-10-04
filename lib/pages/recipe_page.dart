@@ -25,8 +25,10 @@ class _RecipePageState extends State<RecipePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(_recipe.name),
+        title: Text(
+          _recipe.name,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -35,7 +37,7 @@ class _RecipePageState extends State<RecipePage> {
               _recipe.imagePath,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 15,
                 vertical: 10,
               ),
@@ -47,7 +49,7 @@ class _RecipePageState extends State<RecipePage> {
                       isSweet: _recipe.isSweet(),
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Ingredientes",
                     style: TextStyle(
                       fontSize: 20,
@@ -57,7 +59,7 @@ class _RecipePageState extends State<RecipePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Lista"),
+                      const Text("Lista"),
                       Checkbox(
                           value: _baseIngredients,
                           onChanged: (value) {
@@ -69,7 +71,7 @@ class _RecipePageState extends State<RecipePage> {
                           }),
                     ],
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   _baseIngredients == true
                       ? Align(
                           alignment: Alignment.centerLeft,
@@ -83,15 +85,15 @@ class _RecipePageState extends State<RecipePage> {
                       : Text(
                           _recipe.ingredientsDescription,
                         ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "Modo de Preparo",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     _recipe.steps,
                   ),

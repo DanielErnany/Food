@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food/models/recipe.dart';
 import 'package:food/widgets/recipe_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -42,18 +43,34 @@ class _RecipesPageState extends State<RecipesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Food"),
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/food_logo.png',
+              height: 60,
+              fit: BoxFit.contain,
+            ),
+            Text(
+              "Food",
+              style: GoogleFonts.sixtyfour(
+                fontSize: 30,
+                color: Colors.red,
+              ),
+            ),
+          ],
+        ),
       ),
       body: isLoading
-          ? const Center(
+          ? Center(
               child: CircularProgressIndicator(),
             )
           : Padding(
               padding: const EdgeInsets.all(10),
               child: GridView.builder(
                 itemCount: recipes.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
